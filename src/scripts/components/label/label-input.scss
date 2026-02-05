@@ -1,0 +1,79 @@
+.h5peditor-label-exercise-label-input-wrapper {
+  position: relative;
+
+  & .h5peditor-label-exercise-label-input {
+    background-color: var(--h5p-theme-ui-base, #ffffff);
+    border: 2px solid var(--h5p-theme-alternative-darker, #C7D7EF);
+    border-radius: var(--h5p-theme-border-radius-medium, 0.375rem);
+    box-sizing: border-box;
+    color: var(--h5p-theme-text-primary, #101729);
+    font-size: var(--h5p-theme-font-size-l, 1rem);
+    font-weight: 600;
+    overflow: hidden;
+    padding: calc(var(--h5p-theme-spacing-xs, 0.65rem) / 2) 0 calc(var(--h5p-theme-spacing-xs, 0.65rem) / 2) var(--h5p-theme-spacing-xxs, 0.5rem);
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+
+    &:focus-visible {
+      box-shadow: 0 0 0.5rem 0 var(--h5p-theme-contrast-cta-white, #006FBF);
+      border-color: var(--h5p-theme-contrast-cta-white, #006FBF);
+      outline: 1px ridge var(--h5p-theme-contrast-cta-white, #006FBF);
+    }
+  }
+}
+
+.h5peditor-label-exercise-label.correct .h5peditor-label-exercise-label-input-wrapper::after {
+  color: var(--h5p-theme-feedback-correct-main, #256D1D);
+  content: var(--icon-fontawesome-check);
+}
+
+.h5peditor-label-exercise-label.wrong .h5peditor-label-exercise-label-input-wrapper::after {
+  color: var(--h5p-theme-feedback-incorrect-main, #a13236);
+  content: var(--icon-fontawesome-xmark);
+}
+
+.h5peditor-label-exercise-label.correct .h5peditor-label-exercise-label-input {
+  background-color: var(--h5p-theme-feedback-correct-secondary, #f3fcf0);
+  color: var(--h5p-theme-feedback-correct-main, #256D1D);
+  padding-right: var(--h5p-theme-spacing-m, 1.5rem);
+}
+
+.h5peditor-label-exercise-label.wrong .h5peditor-label-exercise-label-input {
+  background-color: var(--h5p-theme-feedback-incorrect-secondary, #faf0f4);
+  color: var(--h5p-theme-feedback-incorrect-main, #a13236);
+  padding-right: var(--h5p-theme-spacing-m, 1.5rem);
+}
+
+.h5peditor-label-exercise-label.correct .h5peditor-label-exercise-label-input:not(:focus-visible) {
+  border: solid 2px var(--h5p-theme-feedback-correct-third, #cff1c2);
+}
+
+.h5peditor-label-exercise-label.wrong .h5peditor-label-exercise-label-input:not(:focus-visible) {
+  border: solid 2px var(--h5p-theme-feedback-incorrect-third, #f6dce7);
+}
+
+.h5peditor-label-exercise-label.correct .h5peditor-label-exercise-label-input-wrapper::after,
+.h5peditor-label-exercise-label.wrong .h5peditor-label-exercise-label-input-wrapper::after {
+  font-family: 'H5PFontAwesome4', sans-serif;
+  font-size: var(--h5p-font-size-m, 1.25rem);
+  position: absolute;
+  right: var(--h5p-theme-spacing-xxs, 0.5rem);
+  text-decoration: none;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.h5p-theme .h5peditor-label-exercise-label.correct .h5peditor-label-exercise-label-input-wrapper::after,
+.h5p-theme .h5peditor-label-exercise-label.wrong .h5peditor-label-exercise-label-input-wrapper::after {
+  font-family: 'h5p-theme', sans-serif;
+}
+
+.h5p-theme .h5peditor-label-exercise-label.correct .h5peditor-label-exercise-label-input-wrapper::after {
+  content: var(--icon-h5p-theme-correct);
+}
+
+.h5p-theme .h5peditor-label-exercise-label.wrong .h5peditor-label-exercise-label-input-wrapper::after {
+  content: var(--icon-h5p-theme-wrong);
+}

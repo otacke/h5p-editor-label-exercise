@@ -1,0 +1,19 @@
+.h5peditor-label-exercise-edit-area {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-area: 2 / 1 / 2 / 1;
+  position: relative;
+
+  &:has(.h5peditor-label-exercise-background.display-none) {
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--h5p-editor-border-color);
+  }
+
+  .h5peditor-label-exercise-label-area {
+    grid-area: 1 / 1 / 1 / 1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}

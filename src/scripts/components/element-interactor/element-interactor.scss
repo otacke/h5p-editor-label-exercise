@@ -1,0 +1,65 @@
+.h5peditor-label-exercise-element-interactor {
+  box-sizing: border-box;
+  container-type: inline-size;
+  container-name: element-interactor;
+  left: var(--editor-label-exercise-element-x);
+  position: absolute;
+  top: var(--editor-label-exercise-element-y);
+  width: var(--editor-label-exercise-element-width);
+  height: var(--editor-label-exercise-element-height);
+
+  .h5peditor-label-exercise-element-interactor-summary {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  &.can-move {
+    cursor: move;
+  }
+
+  &:focus {
+    outline: 2px dotted var(--h5p-theme-main-cta-base, #006FBF) !important; /* H5P Core is overriding this with !important :-/ */
+  }
+
+  &:not(:focus) {
+    .h5peditor-label-exercise-element-interactor-resize-knob {
+      display: none;
+    }
+  }
+}
+
+.h5p-content.using-mouse,
+.h5peditor-label-exercise.using-mouse,
+.h5peditor-label-exercise-element-interactor:not(:focus-within),
+.h5peditor-label-exercise-exercise-instance:focus-within {
+  .toolbar-button-move {
+    display: none;
+  }
+
+  .toolbar-button-resize {
+    display: none;
+  }
+}
+
+.h5p-content.using-mouse,
+.h5peditor-label-exercise.using-mouse {
+  .h5peditor-label-exercise-element-interactor {
+    &:focus {
+      outline: 2px dotted var(--h5p-theme-main-cta-base, #006FBF) !important; /* H5P Core is overriding this with !important :-/ */
+    }
+  }
+}

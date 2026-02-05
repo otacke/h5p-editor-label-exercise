@@ -1,0 +1,22 @@
+{
+  "libraryStrings": {
+    "l10n.addLabel": "Add label",
+    "l10n.confirmDeletionHeader": "Delete label",
+    "l10n.confirmDeletionDialog": "Do you really want to delete this label?",
+    "l10n.confirmDeletionConfirm": "Yes, delete",
+    "l10n.confirmDeletionCancel": "No, cancel",
+    "l10n.cancel": "Cancel",
+    "l10n.done": "Done",
+    "a11y.toolbar": "Choose your action.",
+    "a11y.contextMenu": "Context menu for @denominator",
+    "a11y.labelXOfY": "Label @current of @total",
+    "a11y.edit": "Edit",
+    "a11y.delete": "Delete",
+    "a11y.toggleMoveModeActive": "Leave move mode. Use arrow keys to move the label.",
+    "a11y.toggleMoveModeInactive": "Enter move mode",
+    "a11y.toggleResizeModeActive": "Leave resize mode. Use arrow keys to resize the label.",
+    "a11y.toggleResizeModeInactive": "Enter resize mode",
+    "a11y.hideHint": "Hide hint",
+    "a11y.showHint": "Show hint"
+  }
+}

@@ -1,0 +1,17 @@
+.h5peditor-label-exercise-label {
+  height: var(--height);
+  left: var(--left);
+  position: relative;
+  top: var(--top);
+  width: var(--width);
+
+  &.display-none {
+    display: none;
+  }
+
+  &:has(.joubel-tip-container) {
+    .h5peditor-label-exercise-label-input {
+      padding-right: calc(var(--h5p-theme-spacing-l, 2rem) * 1.1);
+    }
+  }
+}

@@ -1,0 +1,24 @@
+.joubel-tip-container {
+  font-size: var(--h5p-theme-font-size-l, 1rem);
+  position: absolute;
+  right: var(--h5p-theme-spacing-xxs, 0.5rem);
+  top: 50%;
+  transform: translateY(-50%);
+
+  &:focus-visible {
+    outline: 4px ridge var(--h5p-theme-contrast-cta-white, #006FBF);
+    border-radius: 4px;
+  }
+
+  &.display-none {
+    display: none;
+  }
+
+  & .joubel-icon-tip-normal {
+    font-size: var(--h5p-theme-font-size-xxl, 1.5rem);
+  }
+
+  & [class^="joubel-icon-"] {
+    line-height: var(--h5p-theme-font-size-xxl, 1.5rem);
+  }
+}

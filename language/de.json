@@ -1,0 +1,22 @@
+{
+  "libraryStrings": {
+    "l10n.addLabel": "Label hinzufügen",
+    "l10n.confirmDeletionHeader": "Label löschen",
+    "l10n.confirmDeletionDialog": "Möchtest du dieses Label wirklich löschen?",
+    "l10n.confirmDeletionConfirm": "Ja, löschen",
+    "l10n.confirmDeletionCancel": "Nein, abbrechen",
+    "l10n.cancel": "Abbrechen",
+    "l10n.done": "Fertig",
+    "a11y.toolbar": "Wähle deine Aktion.",
+    "a11y.contextMenu": "Kontextmenü für @denominator",
+    "a11y.labelXOfY": "Label @current von @total",
+    "a11y.edit": "Bearbeiten",
+    "a11y.delete": "Löschen",
+    "a11y.toggleMoveModeActive": "Bewegungsmodus verlassen. Verwende die Pfeiltasten, um das Label zu verschieben.",
+    "a11y.toggleMoveModeInactive": "Bewegungsmodus aktivieren",
+    "a11y.toggleResizeModeActive": "Größenänderungsmodus verlassen. Verwende die Pfeiltasten, um die Größe des Labels zu ändern.",
+    "a11y.toggleResizeModeInactive": "Größenänderungsmodus aktivieren",
+    "a11y.hideHint": "Hinweis ausblenden",
+    "a11y.showHint": "Hinweis anzeigen"
+  }
+}
