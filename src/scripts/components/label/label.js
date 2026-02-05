@@ -66,6 +66,7 @@ export default class Label {
       position: this.params.position,
       total: this.params.total,
       dictionary: this.params.dictionary,
+      solutions: this.solutions,
     }, {
       onInteracted: () => {
         this.callbacks.onInteracted();

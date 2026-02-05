@@ -15,21 +15,6 @@ export default class LabelHint {
       this.params.text,
       { tipLabel: this.params.dictionary.get('a11y.showHint').replaceAll('@current', this.params.position) },
     )[0];
-
-    this.dom.addEventListener('click', () => {
-      this.updateAriaLabel();
-    });
-  }
-
-  /**
-   * Update aria-label text.
-   */
-  updateAriaLabel() {
-    const hasPopupOpen = this.dom.getAttribute('aria-expanded') === 'true';
-    const ariaLabel = hasPopupOpen ?
-      this.params.dictionary.get('a11y.hideHint') :
-      this.params.dictionary.get('a11y.showHint').replaceAll('@current', this.params.position);
-    this.dom.setAttribute('aria-label', ariaLabel);
   }
 
   /**

@@ -20,26 +20,15 @@ export default class LabelInput {
     this.position = this.params.position;
     this.total = this.params.total;
 
-    this.setAnswerGiven(false);
     this.previousState = '';
 
     const { dom, input } = this.buildDOM();
     this.dom = dom;
     this.input = input;
 
-    this.resetAriaLabel();
-  }
+    this.setAnswer(this.params.solutions[0] || '');
 
-  /**
-   * Set answer given flag.
-   * @param {boolean} given Answer given state.
-   */
-  setAnswerGiven(given) {
-    if (typeof given !== 'boolean') {
-      return;
-    }
-
-    this.wasAnswerGiven = given;
+    this.disable();
   }
 
   /**
@@ -58,44 +47,9 @@ export default class LabelInput {
     input.setAttribute('spellcheck', 'false');
     input.type = 'text';
 
-    input.addEventListener('input', () => {
-      this.setAnswerGiven(true);
-    });
-
-    input.addEventListener('focus', () => {
-      this.handleFocus();
-    });
-
-    input.addEventListener('blur', () => {
-      this.handleBlur();
-    });
-
     dom.appendChild(input);
 
     return { dom, input };
-  }
-
-  /**
-   * Handle focus event.
-   */
-  handleFocus() {
-    if (!this.input.readOnly) {
-      return;
-    }
-
-    requestAnimationFrame(() => {
-      this.input.setSelectionRange(0, 0);
-    });
-  }
-
-  /**
-   * Handle blur event.
-   */
-  handleBlur() {
-    if (this.previousState !== this.getAnswer()) {
-      this.callbacks.onInteracted();
-    }
-    this.previousState = this.getAnswer();
   }
 
   /**
@@ -104,16 +58,6 @@ export default class LabelInput {
    */
   getAnswer() {
     return this.input.value.trim();
-  }
-
-  /**
-   * Reset aria-label text.
-   */
-  resetAriaLabel() {
-    const ariaLabel = this.params.dictionary.get('a11y.labelXOfY')
-      .replaceAll('@current', this.position)
-      .replaceAll('@total', this.total);
-    this.input.setAttribute('aria-label', ariaLabel);
   }
 
   /**
@@ -153,9 +97,7 @@ export default class LabelInput {
    */
   reset() {
     this.setAnswer('');
-    this.setAnswerGiven(false);
     this.previousState = '';
-    this.resetAriaLabel();
   }
 
   /**
