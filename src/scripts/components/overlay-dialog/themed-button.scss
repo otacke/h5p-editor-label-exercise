@@ -46,7 +46,7 @@
 
 .h5p-theme-button::before,
 .h5p-theme-button::after {
-  font-family: 'h5p-theme';
+  font-family: 'h5p-theme', sans-serif;
   font-weight: normal;
 }
 
@@ -56,16 +56,10 @@
   --is-icon-only: 0;
   --icon-position: absolute;
   --icon-opacity: var(--is-icon-only);
-  --icon-transform-x: calc(
-    (-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m) / 2) *
-      (1 - var(--is-icon-only))
-  );
+  --icon-transform-x: calc((-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m) / 2) * (1 - var(--is-icon-only)));
   --icon-transform-y: calc(10px * (1 - var(--is-icon-only)));
 
-  padding-inline: calc(
-    (var(--padding-inline) * (1 - var(--is-icon-only))) +
-      (var(--h5p-theme-spacing-s) * var(--is-icon-only))
-  );
+  padding-inline: calc((var(--padding-inline) * (1 - var(--is-icon-only))) + (var(--h5p-theme-spacing-s) * var(--is-icon-only)));
   background-color: var(--h5p-theme-main-cta-base);
   color: var(--h5p-theme-contrast-cta);
 }
@@ -75,10 +69,7 @@
     var(--h5p-theme-spacing-l) - var(--h5p-theme-spacing-m) / 2
   );
   --icon-opacity: 1;
-  --icon-transform-x: calc(
-    (-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m)) *
-      (1 - var(--is-icon-only))
-  );
+  --icon-transform-x: calc((-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m)) * (1 - var(--is-icon-only)));
   --icon-transform-y: 0;
 
   background-color: var(--h5p-theme-main-cta-light);
