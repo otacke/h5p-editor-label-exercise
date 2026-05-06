@@ -1,7 +1,6 @@
 import ConfirmationDialog from '@components/confirmation-dialog/confirmation-dialog.js';
-import Dictionary from '@services/dictionary.js';
-
 import Main from '@components/main.js';
+import Dictionary from '@services/dictionary.js';
 
 export default class LabelExercise {
 

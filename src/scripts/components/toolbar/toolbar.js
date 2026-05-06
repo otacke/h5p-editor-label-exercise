@@ -1,5 +1,5 @@
-import { extend } from '@services/util.js';
 import ToolbarButton from '@components/toolbar-button/toolbar-button.js';
+import { extend } from '@services/util.js';
 
 import './toolbar.scss';
 

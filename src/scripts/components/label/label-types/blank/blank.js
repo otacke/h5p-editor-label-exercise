@@ -1,5 +1,5 @@
-import Hint from '@components/label/label-types/hint.js';
 import Label from '@components/label/label.js';
+import Hint from '@components/label/label-types/hint.js';
 import { EVALUATION_STATE } from '@services/constants.js';
 import { splitSolutionString } from '@services/util.js';
 import BlankInput from './blank-input.js';

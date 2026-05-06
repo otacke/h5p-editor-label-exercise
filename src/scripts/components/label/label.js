@@ -1,5 +1,5 @@
-import { extend } from '@services/util.js';
 import Telemetry from '@models/telemetry.js';
+import { extend } from '@services/util.js';
 import './label.scss';
 
 export default class Label {

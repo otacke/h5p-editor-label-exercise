@@ -3,7 +3,6 @@ import OverlayDialog from '@components/overlay-dialog/overlay-dialog.js';
 import Toolbar from '@components/toolbar/toolbar.js';
 import { LABEL_TYPE } from '@services/constants.js';
 import { extend } from '@services/util.js';
-
 import './main.scss';
 
 /** @constant {Map} NAMES_OF_FORM_FIELDS Names of valid form fields for label types. */

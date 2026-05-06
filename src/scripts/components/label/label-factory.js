@@ -1,7 +1,7 @@
 import { LABEL_TYPE } from '@services/constants.js';
-import Text from './label-types/text/text.js';
-import Dropdown from './label-types/dropdown/dropdown.js';
 import Blank from './label-types/blank/blank.js';
+import Dropdown from './label-types/dropdown/dropdown.js';
+import Text from './label-types/text/text.js';
 
 export default class LabelFactory {
 
