@@ -21,14 +21,20 @@
   }
 
   .layer {
-    position: absolute;
     left: 0;
+    position: absolute;
     top: 0;
     width: 100%;
   }
 
   &.can-move {
     cursor: move;
+  }
+
+  &.can-resize-y {
+    .layer {
+      height: 100%;
+    }
   }
 
   &:focus {

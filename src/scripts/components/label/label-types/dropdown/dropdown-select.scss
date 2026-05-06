@@ -1,0 +1,87 @@
+.h5peditor-label-exercise-dropdown-select-wrapper {
+  position: relative;
+
+  & .h5peditor-label-exercise-dropdown-select {
+    appearance: none;
+    background-color: var(--h5p-theme-ui-base, #ffffff);
+    border: 2px solid var(--h5p-theme-alternative-darker, #C7D7EF);
+    border-radius: var(--h5p-theme-border-radius-medium, 0.375rem);
+    box-sizing: border-box;
+    color: var(--h5p-theme-text-primary, #101729);
+    cursor: pointer;
+    font-size: var(--h5p-theme-font-size-l, 1rem);
+    font-weight: 600;
+    opacity: 1;
+    overflow: hidden;
+    padding: calc(var(--h5p-theme-spacing-xs, 0.65rem) / 2) var(--h5p-theme-spacing-m, 1.5rem) calc(var(--h5p-theme-spacing-xs, 0.65rem) / 2) var(--h5p-theme-spacing-xxs, 0.5rem);
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+
+    &:focus-visible {
+      box-shadow: 0 0 0.5rem 0 var(--h5p-theme-contrast-cta-white, #006FBF);
+      border-color: var(--h5p-theme-contrast-cta-white, #006FBF);
+      outline: 1px ridge var(--h5p-theme-contrast-cta-white, #006FBF);
+    }
+
+    &:disabled {
+      cursor: default;
+    }
+  }
+
+  &::after {
+    content: var(--icon-fontawesome-caret-down);
+    font-family: 'H5PFontAwesome4', sans-serif;
+    font-size: var(--h5p-theme-font-size-l, 1rem);
+    pointer-events: none;
+    position: absolute;
+    right: var(--h5p-theme-spacing-xxs, 0.5rem);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.h5peditor-label-exercise-label-dropdown.correct .h5peditor-label-exercise-dropdown-select-wrapper::after {
+  color: var(--h5p-theme-feedback-correct-main, #256D1D);
+  content: var(--icon-fontawesome-check);
+  font-family: 'H5PFontAwesome4', sans-serif;
+  font-size: var(--h5p-font-size-m, 1.25rem);
+  text-decoration: none;
+}
+
+.h5peditor-label-exercise-label-dropdown.wrong .h5peditor-label-exercise-dropdown-select-wrapper::after {
+  color: var(--h5p-theme-feedback-incorrect-main, #a13236);
+  content: var(--icon-fontawesome-xmark);
+  font-family: 'H5PFontAwesome4', sans-serif;
+  font-size: var(--h5p-font-size-m, 1.25rem);
+  text-decoration: none;
+}
+
+.h5peditor-label-exercise-label-dropdown.correct .h5peditor-label-exercise-dropdown-select {
+  background-color: var(--h5p-theme-feedback-correct-secondary, #f3fcf0);
+  color: var(--h5p-theme-feedback-correct-main, #256D1D);
+}
+
+.h5peditor-label-exercise-label-dropdown.wrong .h5peditor-label-exercise-dropdown-select {
+  background-color: var(--h5p-theme-feedback-incorrect-secondary, #faf0f4);
+  color: var(--h5p-theme-feedback-incorrect-main, #a13236);
+}
+
+.h5peditor-label-exercise-label-dropdown.correct .h5peditor-label-exercise-dropdown-select:not(:focus-visible) {
+  border: solid 2px var(--h5p-theme-feedback-correct-third, #cff1c2);
+}
+
+.h5peditor-label-exercise-label-dropdown.wrong .h5peditor-label-exercise-dropdown-select:not(:focus-visible) {
+  border: solid 2px var(--h5p-theme-feedback-incorrect-third, #f6dce7);
+}
+
+.h5p-theme .h5peditor-label-exercise-label-dropdown.correct .h5peditor-label-exercise-dropdown-select-wrapper::after {
+  content: var(--icon-h5p-theme-correct);
+  font-family: 'h5p-theme', sans-serif;
+}
+
+.h5p-theme .h5peditor-label-exercise-label-dropdown.wrong .h5peditor-label-exercise-dropdown-select-wrapper::after {
+  content: var(--icon-h5p-theme-wrong);
+  font-family: 'h5p-theme', sans-serif;
+}

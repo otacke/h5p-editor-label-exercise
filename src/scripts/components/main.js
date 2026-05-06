@@ -1,8 +1,17 @@
-import { extend } from '@services/util.js';
 import EditArea from '@components/editArea.js';
 import OverlayDialog from '@components/overlay-dialog/overlay-dialog.js';
 import Toolbar from '@components/toolbar/toolbar.js';
+import { LABEL_TYPE } from '@services/constants.js';
+import { extend } from '@services/util.js';
+
 import './main.scss';
+
+/** @constant {Map} NAMES_OF_FORM_FIELDS Names of valid form fields for label types. */
+const NAMES_OF_FORM_FIELDS = new Map([
+  [LABEL_TYPE.BLANK, ['solutions', 'hint', 'hotspotAnchorPosition', 'telemetry']],
+  [LABEL_TYPE.DROPDOWN, ['solutions', 'distractors', 'hint', 'hotspotAnchorPosition', 'telemetry']],
+  [LABEL_TYPE.TEXT, ['text', 'hotspotAnchorPosition', 'telemetry']],
+]);
 
 export default class Main {
 
@@ -56,22 +65,28 @@ export default class Main {
    * @returns {Toolbar} Toolbar instance.
    */
   buildToolbar() {
+    const buttonTypes = Object.values(LABEL_TYPE);
+
     return new Toolbar({
-      buttons: [{
-        id: 'add-label',
-        type: 'pulse',
-        props: [{ draggable: true }],
-        dataTransferPairs: [{ type: 'h5p-label-exercise-toolbar', data: 'true' }],
-        pulseStates: [
-          {
-            id: 'add-label',
-            label: this.params.dictionary.get('l10n.addLabel'),
+      buttons: buttonTypes.map((type) => {
+        const capitalizedType = `${type.charAt(0).toUpperCase()}${type.slice(1)}`;
+
+        return {
+          id: `add-${type}`,
+          type: 'pulse',
+          props: [{ draggable: true }],
+          dataTransferPairs: [{ type: 'h5p-label-exercise-toolbar', data: type }],
+          pulseStates: [
+            {
+              id: `add-${type}`,
+              label: this.params.dictionary.get(`l10n.add${capitalizedType}`),
+            },
+          ],
+          onClick: () => {
+            this.addLabelToEditArea({ type }, { new: true });
           },
-        ],
-        onClick: () => {
-          this.addLabelToEditArea({}, { new: true });
-        },
-      }],
+        };
+      }),
     });
   }
 
@@ -95,8 +110,8 @@ export default class Main {
       ...params,
       globals: params.globals,
     }, {
-      onDrop: (coordinates) => {
-        this.handleDrop(coordinates);
+      onDrop: (params) => {
+        this.handleDrop(params);
       },
       onEdit: (index) => {
         this.openEditorDialogForLabel(index);
@@ -111,12 +126,14 @@ export default class Main {
 
   /**
    * Handle user dropping a label from the toolbar into the edit area.
-   * @param {object} coordinates Coordinates where label was dropped.
-   * @param {number} coordinates.x X coordinate.
-   * @param {number} coordinates.y Y coordinate.
+   * @param {object} params Parameters.
+   * @param {string} params.type Type.
+   * @param {object} params.coordinates Coordinates where label was dropped.
+   * @param {number} params.coordinates.x X coordinate.
+   * @param {number} params.coordinates.y Y coordinate.
    */
-  handleDrop(coordinates) {
-    this.addLabelToEditArea({ telemetry: coordinates }, { new: true });
+  handleDrop(params) {
+    this.addLabelToEditArea({ type: params.type, telemetry: params.coordinates }, { new: true });
   }
 
   /**
@@ -139,8 +156,14 @@ export default class Main {
 
     this.backupLabelParams = { ...this.currentLabelGroupInstance.params };
 
+    let fields = window.structuredClone(this.currentLabelGroupInstance.field.fields);
+    fields = fields.filter((field) => {
+      const type = this.currentLabelGroupInstance.params.type;
+      return NAMES_OF_FORM_FIELDS.get(type).includes(field.name);
+    });
+
     H5PEditor.processSemanticsChunk(
-      this.currentLabelGroupInstance.field.fields,
+      fields,
       this.currentLabelGroupInstance.params,
       H5P.jQuery(contentFormDOM),
       this.currentLabelGroupInstance,
@@ -172,11 +195,13 @@ export default class Main {
       {
         onClosed: () => {
           this.resetLabelGroup();
+          this.currentLabelGroupInstance?.validate(); // Ensure form values are saved
           this.closeEditorDialog();
           this.clearLabelGroupBackup();
           this.editArea.updateLabels();
         },
         onConfirmed: () => {
+          this.currentLabelGroupInstance?.validate(); // Ensure form values are saved
           this.closeEditorDialog();
           this.clearLabelGroupBackup();
           this.editArea.updateLabels();
@@ -190,6 +215,10 @@ export default class Main {
    */
   resetLabelGroup() {
     this.currentLabelGroupInstance.params = { ...this.backupLabelParams };
+  }
+
+  resize() {
+    this.editArea.resize();
   }
 
   /**

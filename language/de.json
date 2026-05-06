@@ -1,6 +1,8 @@
 {
   "libraryStrings": {
-    "l10n.addLabel": "Label hinzufügen",
+    "l10n.addBlank": "Lücke hinzufügen",
+    "l10n.addDropdown": "Auswahlfeld hinzufügen",
+    "l10n.addText": "Text hinzufügen",
     "l10n.confirmDeletionHeader": "Label löschen",
     "l10n.confirmDeletionDialog": "Möchtest du dieses Label wirklich löschen?",
     "l10n.confirmDeletionConfirm": "Ja, löschen",

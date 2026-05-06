@@ -21,6 +21,7 @@
     flex-grow: 0;
     flex-shrink: 1;
     flex-wrap: wrap;
+    gap: 0.25rem;
 
     .toolbar-button {
       color: var(--h5p-theme-main-cta-base, #006FBF);
@@ -37,8 +38,16 @@
         width: var(--background-size);
       }
 
-      &.toolbar-button-add-label::before {
-        content: var(--icon-fontawesome-text, 'o');
+      &.toolbar-button-add-blank::before {
+        content: var(--icon-fontawesome-pen-to-square, 'o');
+      }
+
+      &.toolbar-button-add-dropdown::before {
+        content: var(--icon-fontawesome-bars, 'v');
+      }
+
+      &.toolbar-button-add-text::before {
+        content: var(--icon-fontawesome-a, 'T');
       }
     }
   }

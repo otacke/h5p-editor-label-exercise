@@ -1,0 +1,13 @@
+.h5peditor-label-exercise-label-dropdown {
+  &:has(.joubel-tip-container) {
+    // Shift hint left of the caret (caret stays at its default right: spacing-xxs)
+    .joubel-tip-container {
+      right: calc(var(--h5p-theme-spacing-xxs, 0.5rem) + var(--h5p-theme-font-size-l, 1rem));
+    }
+
+    // Padding-right covers: hint right offset + hint width + gap
+    .h5peditor-label-exercise-dropdown-select {
+      padding-right: calc(var(--h5p-theme-font-size-xxl, 1.5rem) + var(--h5p-theme-spacing-m, 1.5rem) + var(--h5p-theme-spacing-xxs, 0.5rem));
+    }
+  }
+}

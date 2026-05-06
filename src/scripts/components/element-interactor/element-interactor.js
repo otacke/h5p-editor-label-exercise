@@ -44,7 +44,7 @@ export default class ElementInteractor {
       onCopy: () => {},
       onDelete: () => {},
       onMove: () => {},
-      resizeCard: () => {},
+      onResize: () => {},
       getDenominator: () => {},
       getSummaryText: () => {},
     }, callbacks);
@@ -147,6 +147,15 @@ export default class ElementInteractor {
     if (this.params.capabilities.move) {
       this.dom.classList.add('can-move');
     }
+
+    if (this.params.capabilities.resizeY) {
+      this.dom.classList.add('can-resize-y');
+    }
+
+    if (this.params.capabilities.resizeX) {
+      this.dom.classList.add('can-resize-x');
+    }
+
     this.dom.setAttribute('tabindex', '0');
     this.contentDOM = document.createElement('div');
     this.contentDOM.classList.add('h5peditor-label-exercise-element-interactor-content');
@@ -356,7 +365,7 @@ export default class ElementInteractor {
             this.updateTelemetryByPx(deltaPx, options);
           },
           onStoppedResizing: () => {
-            this.callbacks.resizeCard(this.params.id);
+            this.callbacks.onResize(this.params.id);
           },
         },
       );
@@ -804,7 +813,7 @@ export default class ElementInteractor {
     }
 
     this.resizeDelta = 1;
-    this.callbacks.resizeCard(this.params.id);
+    this.callbacks.onResize(this.params.id);
   }
 
   /**

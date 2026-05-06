@@ -1,11 +1,10 @@
 import { extend } from '@services/util.js';
-import './label-input.scss';
+import './blank-input.scss';
 
-export default class LabelInput {
+export default class BlankInput {
   /**
-   * Create instance of LabelInput.
-   * @param {object} [params] Parameters for label input.
-   * @param {number} params.position Position of the label.
+   * @param {object} [params] Parameters for blank input.
+   * @param {number} params.position Position of vlank.
    * @param {number} params.total Total number of labels.
    * @param {object} params.dictionary Dictionary for aria labels.
    * @param {object} [callbacks] Callback functions.
@@ -37,11 +36,11 @@ export default class LabelInput {
    */
   buildDOM() {
     const dom = document.createElement('div');
-    dom.classList.add('h5peditor-label-exercise-label-input-wrapper');
+    dom.classList.add('h5peditor-label-exercise-blank-input-wrapper');
 
     const input = document.createElement('input');
     input.id = H5P.createUUID();
-    input.classList.add('h5peditor-label-exercise-label-input');
+    input.classList.add('h5peditor-label-exercise-blank-input');
     input.setAttribute('autocomplete', 'off');
     input.setAttribute('autocapitalize', 'off');
     input.setAttribute('spellcheck', 'false');

@@ -1,5 +1,5 @@
-import Dictionary from '@services/dictionary.js';
 import ConfirmationDialog from '@components/confirmation-dialog/confirmation-dialog.js';
+import Dictionary from '@services/dictionary.js';
 
 import Main from '@components/main.js';
 
@@ -65,6 +65,10 @@ export default class LabelExercise {
 
     this.parent.ready(() => {
       this.handleParentReady();
+    });
+
+    window.addEventListener('resize', () => {
+      this.main.resize();
     });
   }
 

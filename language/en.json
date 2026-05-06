@@ -1,6 +1,8 @@
 {
   "libraryStrings": {
-    "l10n.addLabel": "Add label",
+    "l10n.addBlank": "Add blank",
+    "l10n.addDropdown": "Add dropdown menu",
+    "l10n.addText": "Add text",
     "l10n.confirmDeletionHeader": "Delete label",
     "l10n.confirmDeletionDialog": "Do you really want to delete this label?",
     "l10n.confirmDeletionConfirm": "Yes, delete",

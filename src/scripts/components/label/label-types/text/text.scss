@@ -1,0 +1,18 @@
+.h5p-label-exercise-advanced-text-wrapper {
+  height: 100%;
+  overflow: hidden;
+
+  .h5p-advanced-text {
+    font-family: sans-serif;
+    font-size: var(--scaled-font-size);
+    line-height: calc(1.5 * var(--scaled-font-size));
+
+    p:first-child {
+      margin-top: 0;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

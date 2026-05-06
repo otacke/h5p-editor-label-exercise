@@ -1,6 +1,7 @@
 import Background from '@components/background.js';
 import ElementInteractor from '@components/element-interactor/element-interactor.js';
-import Label from '@components/label/label.js';
+import LabelFactory from './label/label-factory.js';
+import { BASE_FONT_SIZE_PX, BASE_WIDTH_PX, LABEL_TYPE } from '@services/constants.js';
 import { extend, parseFloatWithFallback } from '@services/util.js';
 import { isUsingMouse } from '@services/util-h5p.js';
 import './editArea.scss';
@@ -67,7 +68,8 @@ export default class EditArea {
    * @param {DragEvent} event Drag event with drop data.
    */
   handleLabelDropped(event) {
-    if (event.dataTransfer.getData('h5p-label-exercise-toolbar') !== 'true') {
+    const type = event.dataTransfer.getData('h5p-label-exercise-toolbar');
+    if (!type) {
       return; // Not meant to be dropped here
     }
 
@@ -78,7 +80,7 @@ export default class EditArea {
 
     event.preventDefault();
 
-    this.callbacks.onDrop({ x, y });
+    this.callbacks.onDrop({ coordinates: { x, y }, type });
   }
 
   /**
@@ -87,13 +89,21 @@ export default class EditArea {
    * @param {object} [options] Options.
    */
   addLabel(params = {}, options = {}) {
+    if (!Object.values(LABEL_TYPE).includes(params.type)) {
+      return;
+    }
+
+    const canHaveSolutions = params.type === LABEL_TYPE.BLANK || params.type === LABEL_TYPE.DROPDOWN;
+    const canHaveDistractors = params.type === LABEL_TYPE.DROPDOWN;
+
     const labelParams = {
       ...params,
       telemetry: { x: 0, y: 0, width: 100 }, // Element interactor responsible for telemetry in editor
-      solutions: params.solutions || '',
-      dictionary: this.params.dictionary,
+      ...(canHaveSolutions && { solutions: params.solutions || '' }),
+      ...(canHaveDistractors && { distractors: params.distractors || '' }),
     };
-    const label = new Label(labelParams);
+
+    const label = LabelFactory.produce({ ...labelParams, dictionary: this.params.dictionary });
 
     const elementInteractor = new ElementInteractor(
       {
@@ -107,7 +117,7 @@ export default class EditArea {
           bringToFront: false,
           sendToBack: false,
           resizeX: true,
-          resizeY: false,
+          resizeY: params.type === LABEL_TYPE.TEXT,
           delete: true,
         },
       },
@@ -124,6 +134,13 @@ export default class EditArea {
           this.editElement(id);
         },
         onMove: (id) => {
+          const index = this.getIndexFromInteractorId(id);
+          const elementInteractor = this.elementInteractors[index];
+
+          const labelGroupInstance = this.params.globals.get('getLabelGroupInstance')(index);
+          labelGroupInstance.params.telemetry = elementInteractor.getTelemetry();
+        },
+        onResize: (id) => {
           const index = this.getIndexFromInteractorId(id);
           const elementInteractor = this.elementInteractors[index];
 
@@ -170,6 +187,10 @@ export default class EditArea {
 
     if (telemetry.width) {
       interactorTelemetry.width = parseFloatWithFallback(telemetry.width);
+    }
+
+    if (telemetry.height) {
+      interactorTelemetry.height = parseFloatWithFallback(telemetry.height);
     }
 
     return interactorTelemetry;
@@ -257,6 +278,11 @@ export default class EditArea {
    */
   getInteractorFromInteractorId(id) {
     return this.elementInteractors.find((ei) => ei.getId() === id);
+  }
+
+  handleResize(id) {
+    const index = this.getIndexFromInteractorId(id);
+    this.callbacks.onResize(index);
   }
 
   /**
@@ -374,6 +400,16 @@ export default class EditArea {
    */
   setBackground(imageParams = {}) {
     this.background.setBackground(imageParams);
+  }
+
+  /**
+   * Resize.
+   */
+  resize() {
+    const baseFontFactor = this.dom.offsetWidth / BASE_WIDTH_PX || 1;
+    const baseFontSize = BASE_FONT_SIZE_PX * baseFontFactor;
+
+    this.dom.style.setProperty('--scaled-font-size', `${baseFontSize}px`);
   }
 
   /**

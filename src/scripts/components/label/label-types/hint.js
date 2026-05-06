@@ -1,9 +1,9 @@
 import { extend } from '@services/util.js';
-import './label-hint.scss';
+import './hint.scss';
 
-export default class LabelHint {
+export default class Hint {
   /**
-   * @param {object} [params] Parameters for label hint.
+   * @param {object} [params] Parameters for blank hint.
    * @param {string} params.text Hint text.
    * @param {number} params.position Position number.
    * @param {object} params.dictionary Translation dictionary.
