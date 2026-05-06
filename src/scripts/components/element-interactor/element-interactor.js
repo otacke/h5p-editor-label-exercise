@@ -978,6 +978,10 @@ export default class ElementInteractor {
     this.setTelemetry(telemetry ?? this.params.telemetry);
   }
 
+  /**
+   * Replace the content DOM element.
+   * @param {HTMLElement} contentDOM New content DOM element.
+   */
   updateContentDOM(contentDOM) {
     this.contentDOM.innerHTML = '';
     this.contentDOM.append(contentDOM);

@@ -4,6 +4,10 @@ import ToolbarButton from '@components/toolbar-button/toolbar-button.js';
 import './toolbar.scss';
 
 export default class Toolbar {
+  /**
+   * @param {object} [params] Parameters.
+   * @param {object[]} [params.buttons] Button configuration objects.
+   */
   constructor(params = {}) {
     this.params = extend({
       buttons: [],

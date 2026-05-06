@@ -3,6 +3,12 @@ import Telemetry from '@models/telemetry.js';
 import './label.scss';
 
 export default class Label {
+  /**
+   * @param {object} [params] Parameters.
+   * @param {object} [params.telemetry] Telemetry object with positioning/size.
+   * @param {object} [callbacks] Callbacks.
+   * @param {function} [callbacks.onInteracted] Called when label is interacted with.
+   */
   constructor(params, callbacks) {
     this.params = extend({}, params);
 
@@ -35,18 +41,30 @@ export default class Label {
     return this.dom;
   }
 
+  /**
+   * Update label with new parameters.
+   */
   update() {
     // Needs to be implemented by implementing class if required
   }
 
+  /**
+   * Enable label interaction.
+   */
   enable() {
     // Needs to be implemented by implementing class if required
   }
 
+  /**
+   * Disable label interaction.
+   */
   disable() {
     // Needs to be implemented by implementing class if required
   }
 
+  /**
+   * Reset label to initial state.
+   */
   reset() {
     // Needs to be implemented by implementing class if required
   }

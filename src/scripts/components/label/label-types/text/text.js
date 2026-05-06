@@ -3,6 +3,11 @@ import { extend } from '@services/util.js';
 import './text.scss';
 
 export default class Text extends Label {
+  /**
+   * @param {object} [params] Parameters.
+   * @param {object} [params.text] H5P.AdvancedText library params.
+   * @param {object} [callbacks] Callbacks.
+   */
   constructor(params = {}, callbacks = {}) {
     super(params, callbacks);
 
@@ -15,10 +20,20 @@ export default class Text extends Label {
     this.updateInstance(params);
   }
 
+  /**
+   * Update label with new parameters.
+   * @param {object} [params] Parameters to update.
+   * @param {object} [params.text] H5P.AdvancedText library params.
+   */
   update(params = {}) {
     this.updateInstance(params);
   }
 
+  /**
+   * Create or replace the H5P.AdvancedText instance.
+   * @param {object} [params] Parameters.
+   * @param {object} [params.text] H5P.AdvancedText library params.
+   */
   updateInstance(params = {}) {
     params.text = extend({
       library: 'H5P.AdvancedText 1.1',

@@ -1,9 +1,9 @@
 import Background from '@components/background.js';
 import ElementInteractor from '@components/element-interactor/element-interactor.js';
-import LabelFactory from './label/label-factory.js';
 import { BASE_FONT_SIZE_PX, BASE_WIDTH_PX, LABEL_TYPE } from '@services/constants.js';
 import { extend, parseFloatWithFallback } from '@services/util.js';
 import { isUsingMouse } from '@services/util-h5p.js';
+import LabelFactory from './label/label-factory.js';
 import './editArea.scss';
 
 export default class EditArea {

@@ -38,7 +38,7 @@ export default class Blank extends Label {
 
   /**
    * Build blank input.
-   * @returns {HTMLElement} DOM for blank input.
+   * @returns {BlankInput} Blank input instance.
    */
   buildBlankInput() {
     return new BlankInput({
@@ -55,7 +55,7 @@ export default class Blank extends Label {
 
   /**
    * Build hint.
-   * @returns {HTMLElement} DOM for hint.
+   * @returns {Hint} Hint instance.
    */
   buildHint() {
     return new Hint({
@@ -161,6 +161,12 @@ export default class Blank extends Label {
     });
   }
 
+  /**
+   * Update label with new parameters, rebuilding input and hint.
+   * @param {object} [params] Parameters to update.
+   * @param {string} [params.solutions] Solutions string.
+   * @param {string} [params.hint] Hint text.
+   */
   update(params = {}) {
     Object.keys(params).forEach((key) => {
       this.params[key] = params[key];

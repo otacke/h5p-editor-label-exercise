@@ -170,10 +170,17 @@ export default class OverlayDialog {
     });
   }
 
+  /**
+   * Track the origin of a pointer down event to detect clicks inside the dialog.
+   * @param {MouseEvent|TouchEvent} event Pointer event.
+   */
   keepTrackOfClickOrigin(event) {
     this.clickOrigin = event.target;
   }
 
+  /**
+   * Clear the tracked click origin.
+   */
   clearClickOrigin() {
     delete this.clickOrigin;
   }
