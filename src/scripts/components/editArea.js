@@ -114,8 +114,8 @@ export default class EditArea {
         capabilities: {
           edit: true,
           move: true,
-          bringToFront: false,
-          sendToBack: false,
+          bringToFront: true,
+          sendToBack: true,
           resizeX: true,
           resizeY: params.type === LABEL_TYPE.TEXT,
           delete: true,
