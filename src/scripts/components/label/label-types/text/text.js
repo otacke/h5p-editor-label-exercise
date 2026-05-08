@@ -13,6 +13,9 @@ export default class Text extends Label {
 
     this.dom = document.createElement('div');
     this.dom.classList.add('h5p-label-exercise-advanced-text-wrapper');
+    if (this.params.backgroundColor) {
+      this.dom.style.setProperty('--background-color', this.params.backgroundColor);
+    }
 
     this.instancePlaceholder = document.createElement('div');
     this.dom.append(this.instancePlaceholder);
@@ -39,6 +42,10 @@ export default class Text extends Label {
       library: 'H5P.AdvancedText 1.1',
       params: {},
     }, params.text ?? {});
+
+    if (params.backgroundColor) {
+      this.dom.style.setProperty('--background-color', params.backgroundColor);
+    }
 
     const instance = H5P.newRunnable(
       params.text,

@@ -9,7 +9,7 @@ import './main.scss';
 const NAMES_OF_FORM_FIELDS = new Map([
   [LABEL_TYPE.BLANK, ['solutions', 'hint', 'hotspotAnchorPosition', 'telemetry']],
   [LABEL_TYPE.DROPDOWN, ['solutions', 'distractors', 'hint', 'hotspotAnchorPosition', 'telemetry']],
-  [LABEL_TYPE.TEXT, ['text', 'hotspotAnchorPosition', 'telemetry']],
+  [LABEL_TYPE.TEXT, ['text', 'backgroundColor', 'hotspotAnchorPosition', 'telemetry']],
 ]);
 
 export default class Main {
