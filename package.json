@@ -1,6 +1,6 @@
 {
   "name": "h5peditor-label-exercise",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Editor widget for H5P.LabelExercise",
   "private": true,
   "scripts": {
